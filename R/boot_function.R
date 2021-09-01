@@ -20,7 +20,6 @@
 #' @examples
 #' boot_function(data=sample_data,n_boot=10000,weight_yn=F,weight_var="weight",test_type_var="type",record_id_var="id",pi_init=0.03,p_init=0.01,se=0.99, sp=0.999,maxit=1000,tol=1e-6,seed=1412414)
 
-library(plyr)
 boot_function<-function(data=sample_data,
                         ##sample data contains participant level data and their categories
                         n_boot=10000,
