@@ -14,7 +14,7 @@
 #' @return Calculate the Combined Performance of Case Definition.
 #' @export
 #' @examples
-#' function(dat=dat_simulated,ab_nen_hyp_obs=0.03,r1=0.99,s1=0.9999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
+#' sesp_adj_prevalence(dat=dat_simulated,ab_nen_hyp_obs=0.03,r1=0.99,s1=0.9999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
 
 
 sesp_adj_prevalence<-function(dat=dat_simulated,
