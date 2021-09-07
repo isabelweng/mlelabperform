@@ -11,7 +11,7 @@ em_2parameters(
   se = 0.99,
   sp = 0.999,
   maxit = 1000,
-  tol = 1e-06,
+  tol = 0.000001,
   verbose = F
 )
 }
