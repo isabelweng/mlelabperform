@@ -14,10 +14,10 @@ combine_perform_subcohort(r, s, prob)
 \item{prob}{probability of each subpopulation in the entire cohort}
 }
 \value{
-Calculate the Combined Performance of Case Definition in the entire populatioj.
+Calculate the Combined Performance of Case Definition in the entire population.
 }
 \description{
-This function calculate the S-matrix of the likelihood.
+This function calculates the Combined Performance of Case Definition in the entire population.
 }
 \examples{
 combine_perform_subcohort(r=c(0.95,0.96,0.97,0.95,0.95,0.96),s=c(0.999,0.997,0.994,0.998,0.996,0.997),prob=c(0.1,0.2,0.3,0.2,0.1,0.1))

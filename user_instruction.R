@@ -120,3 +120,31 @@ epi.conf(dat, ctype = "prevalence", method = "exact", N = 1000,
 
 sesp_adj_prevalence(dat=dat_simulated,ab_nen_hyp_obs=0.03,r1=0.99,s1=0.9999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
 
+###Combined subcohorts
+dat_simulated<-dat_simulated[sample(1:4000,4000,replace=F),]
+
+row.names(dat_simulated)<-NULL
+dat_simulated_1<-dat_simulated[1:1000,]
+dat_simulated_2<-dat_simulated[1001:2000,]
+dat_simulated_3<-dat_simulated[2001:3000,]
+dat_simulated_4<-dat_simulated[3001:4000,]
+
+prob<-c(0.25,0.25,0.25,0.25)
+
+cohort1<-sesp_adj_prevalence(dat=dat_simulated_1,ab_nen_hyp_obs=0.03,r1=1,s1=1,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
+cohort2<-sesp_adj_prevalence(dat=dat_simulated_2,ab_nen_hyp_obs=0.03,r1=1,s1=0.999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
+cohort3<-sesp_adj_prevalence(dat=dat_simulated_3,ab_nen_hyp_obs=0.03,r1=1,s1=0.999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
+cohort4<-sesp_adj_prevalence(dat=dat_simulated_4,ab_nen_hyp_obs=0.03,r1=0.99,s1=0.999,r2=0.9,s2=0.999,r3=0.9,s3=0.999,r4=0.9,s4=0.999)
+
+r<-c(cohort1$sen,cohort2$sen,cohort3$sen,cohort4$sen)
+s<-c(cohort1$sp,cohort2$sp,cohort3$sp,cohort4$sp)
+combine_perform_subcohort(r,s,prob)
+
+
+
+
+
+
+
+
+
