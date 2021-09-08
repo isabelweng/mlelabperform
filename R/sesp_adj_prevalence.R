@@ -60,42 +60,62 @@ sesp_adj_prevalence<-function(dat=dat_simulated,
   y4<-(s4*(1-p4))/((1-r4)*p4+s4*(1-p4))
 
   phi1<-s*tao1
+  phi1<-ifelse(is.na(phi1),0,phi1)
   alpha1<-s*tao1*x1
+  alpha1<-ifelse(is.na(alpha1),0,alpha1)
   rau1<-phi1-alpha1
 
   phi2<-s*(1-tao1)*beta*tao2*tao3
+  phi2<-ifelse(is.na(phi2),0,phi2)
   alpha2<-s*(1-tao1)*beta*tao2*tao3*y1*x2*x3
+  alpha2<-ifelse(is.na(alpha5),0,alpha2)
   rau2<-phi2-alpha2
 
   phi3<-s*(1-tao1)*beta*(1-tao2)
+  phi3<-ifelse(is.na(phi3),0,phi3)
   alpha3<-s*(1-tao1)*beta*(1-tao2)*y1*y2
+  alpha3<-ifelse(is.na(alpha5),0,alpha3)
   rau3<-phi3-alpha3
 
   phi4<-s*(1-tao1)*(1-beta)*(1-tao5)
+  phi4<-ifelse(is.na(phi4),0,phi4)
   alpha4<-s*(1-tao1)*(1-beta)*(1-tao5)*y1*y3
+  alpha4<-ifelse(is.na(alpha4),0,alpha4)
   rau4<-phi4-alpha4
 
   phi5<-s*(1-tao1)*beta*tao2*(1-tao3)*tao4
+  phi5<-ifelse(is.na(phi5),0,phi5)
   alpha5<-s*(1-tao1)*beta*tao2*(1-tao3)*tao4*y1*x2*x3*x4
+  alpha5<-ifelse(is.na(alpha5),0,alpha5)
   rau5<-phi5-alpha5
 
 
   phi6<-s*(1-tao1)*beta*tao2*(1-tao3)*(1-tao4)
+  phi6<-ifelse(is.na(phi6),0,phi6)
   alpha6<-s*(1-tao1)*beta*tao2*(1-tao3)*(1-tao4)*y1*x2*y3*y4
+  alpha6<-ifelse(is.na(alpha6),0,alpha6)
   rau6<-phi6-alpha6
 
   phi7<-s*(1-tao1)*(1-beta)*tao5*tao6
+  phi7<-ifelse(is.na(phi7),0,phi7)
   alpha7<-s*(1-tao1)*(1-beta)*tao5*tao6*y1*x3*x2
+  alpha7<-ifelse(is.na(alpha7),0,alpha7)
   rau7<-phi7-alpha7
 
   phi8<-s*(1-tao1)*(1-beta)*tao5*(1-tao6)*tao7
+  phi8<-ifelse(is.na(phi8),0,phi8)
   alpha8<-s*(1-tao1)*(1-beta)*tao5*(1-tao6)*tao7*y1*x3*x2*x4
+  alpha8<-ifelse(is.na(alpha8),0,alpha8)
   rau8<-phi8-alpha8
 
 
   phi9<-s*(1-tao1)*(1-beta)*tao5*(1-tao6)*(1-tao7)
+  phi9<-ifelse(is.na(phi9),0,phi9)
   alpha9<-s*(1-tao1)*(1-beta)*tao5*(1-tao6)*(1-tao7)*y1*x3*y2*y4
+  alpha9<-ifelse(is.na(alpha9),0,alpha9)
   rau9<-phi9-alpha9
+
+
 
   a<-alpha1+alpha2+alpha5+alpha7+alpha8
   b<-rau1+rau2+rau5+rau7+rau8
@@ -138,5 +158,6 @@ sesp_adj_prevalence<-function(dat=dat_simulated,
                      sen=sen,
                      sp=sp,
                      aPr=aPr)
+
   output
 }
