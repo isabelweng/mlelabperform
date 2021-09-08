@@ -1,7 +1,7 @@
 
 ###User Instruction
 library("devtools")
-install_github("isabelweng/mlelabperform",auth_token = "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")
+install_github("isabelweng/mlelabperform",auth_token = "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",force=T)
 library(mlelabperform)
 
 ###Simulated dataset
