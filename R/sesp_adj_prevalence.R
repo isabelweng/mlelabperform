@@ -68,13 +68,13 @@ sesp_adj_prevalence<-function(dat=dat_simulated,
   phi2<-s*(1-tao1)*beta*tao2*tao3
   phi2<-ifelse(is.na(phi2),0,phi2)
   alpha2<-s*(1-tao1)*beta*tao2*tao3*y1*x2*x3
-  alpha2<-ifelse(is.na(alpha5),0,alpha2)
+  alpha2<-ifelse(is.na(alpha2),0,alpha2)
   rau2<-phi2-alpha2
 
   phi3<-s*(1-tao1)*beta*(1-tao2)
   phi3<-ifelse(is.na(phi3),0,phi3)
   alpha3<-s*(1-tao1)*beta*(1-tao2)*y1*y2
-  alpha3<-ifelse(is.na(alpha5),0,alpha3)
+  alpha3<-ifelse(is.na(alpha3),0,alpha3)
   rau3<-phi3-alpha3
 
   phi4<-s*(1-tao1)*(1-beta)*(1-tao5)
