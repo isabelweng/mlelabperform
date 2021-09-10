@@ -49,7 +49,7 @@ boot_function<-function(data=sample_data,
       input_dat<-data.frame(table(boot_sample$type))$Freq
     }else{
       input_dat<-as.numeric(ddply(boot_sample,~type,summarise,
-                                  n_w=sum(weight,na.rm=T),.drop=T)$n_w)
+                                  n_w=sum(weight,na.rm=T),.drop=F)$n_w)
     }
 
     boot_results<-em_2parameters(nk=input_dat,
