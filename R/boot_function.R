@@ -45,12 +45,11 @@ boot_function<-function(data=sample_data,
     boot_sample<-merge(boot_sample_id,data,by.x="boot_sample_id",by.y=record_id_var,all.x=T)
     colnames(boot_sample)[colnames(boot_sample)==weight_var]<-"weight"
     colnames(boot_sample)[colnames(boot_sample)==test_type_var]<-"type"
-
     if (weight_yn==F){
       input_dat<-data.frame(table(boot_sample$type))$Freq
     }else{
       input_dat<-as.numeric(ddply(boot_sample,~type,summarise,
-                                  n_w=sum(weight,na.rm=T))$n_w,.drop=T)
+                                  n_w=sum(weight,na.rm=T),.drop=T)$n_w)
     }
 
     boot_results<-em_2parameters(nk=input_dat,
