@@ -28,28 +28,30 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
     ###calculate the expectation
     s_matrix<-likelihood_function(se=se, sp=sp, pi=pi_cur , p=p_cur,
                                   nk=nk)[[3]]
-    
-    
+
+
     ##per truth and in our case nrow(s_matrix)==8
-    
+
     epiloson_matrix<-as.data.frame(matrix(NA,
                                           ncol=ncol(s_matrix),
                                           nrow=nrow(s_matrix)))
     for (j in 1:ncol(s_matrix)){
       epilson_vector<- nk[j]*(s_matrix[,j]/sum(s_matrix[,j]))
-      
+
       epiloson_matrix[,j]<-epilson_vector
     }
-    
+
     m<-apply(epiloson_matrix,1,sum,na.rm=T)
-    
+
     ###Update pi and p to maximization
     pi_cur<-m[1]/sum(m)
     p_cur<-sum(m[2:7])/(m[2]+2*m[3]+3*m[4]+4*m[5]+5*m[6]+6*m[7]+6*m[8])
-    
+
     ###Calculate the likelihood
-    log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)+sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)
-    
+    if (pi_cur!=0){
+    log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)+sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}else
+    {log_likelihood_cur<-sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}
+
     log_likelihood_change<-abs(log_likelihood_cur-log_likelihood_prev)
     ###change to previous
     log_likelihood_prev<-log_likelihood_cur
@@ -61,8 +63,8 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
         print(paste0("Current p:",p_cur,sep=""))
       }
     }
-    
-    if( log_likelihood_change < tol ){ 
+
+    if( log_likelihood_change < tol  ){
       flag <- 1
       print(paste0("After ",i," literations: Model Converged."))
       return(data.frame(literation=i,
@@ -70,10 +72,10 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
                         pi=pi_cur,
                         p=p_cur))
       break
-      
+
     }
-    
+
   }
-  
+
 }
 
