@@ -51,13 +51,13 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
     if (pi_cur>0 &  pi_cur<1 & p_cur>0 & p_cur<1  ){
     log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)+sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}
 
-    if ((pi_cur==0|pi_cur==1)) & (p_cur>0 & p_cur<1)   ){
+    if ((pi_cur==0|pi_cur==1) & (p_cur>0 & p_cur<1)   ){
       log_likelihood_cur<-sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}
 
-    if ((p_cur==0|p_cur==1)) & (pi_cur>0 &  pi_cur<1)  ){
+    if ((p_cur==0|p_cur==1)& (pi_cur>0 &  pi_cur<1)  ){
       log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)}
 
-   if ((p_cur==0|p_cur==1)) & (pi_cur==0|pi_cur==1)) ){
+   if ((p_cur==0|p_cur==1) & (pi_cur==0|pi_cur==1) ){
      flag <- 1
      print(paste0("After ",i," literations: Unable to estimate likelihood function with 0/1 prevalence and 0/1 incidence."))
      return(data.frame(literation=i,
