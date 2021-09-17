@@ -48,13 +48,13 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
     p_cur<-sum(m[2:7])/(m[2]+2*m[3]+3*m[4]+4*m[5]+5*m[6]+6*m[7]+6*m[8])
 
     ###Calculate the likelihood
-    if (1>pi_cur>0 & 1>p_cur>0  ){
+    if (pi_cur>0 &  pi_cur<1 & p_cur>0 & p_cur<1  ){
     log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)+sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}
 
-    if ((pi_cur==0|pi_cur==1)) & 1>p_cur>0   ){
+    if ((pi_cur==0|pi_cur==1)) & (p_cur>0 & p_cur<1)   ){
       log_likelihood_cur<-sum(m[2:7])*log(p_cur)+(m[3]+2*m[4]+3*m[5]+4*m[6]+5*m[7]+6*m[8])*log(1-p_cur)}
 
-    if ((p_cur==0|p_cur==1)) & 1>pi_cur>0   ){
+    if ((p_cur==0|p_cur==1)) & (pi_cur>0 &  pi_cur<1)  ){
       log_likelihood_cur<-m[1]*log(pi_cur)+sum(m[2:8])*log(1-pi_cur)}
 
    if ((p_cur==0|p_cur==1)) & (pi_cur==0|pi_cur==1)) ){
