@@ -50,12 +50,13 @@ mle_ci<-function(pi=0.07,p=0.02,nk,se,sp){
   I_inverse<-solve(I)
   varpi<-I_inverse[1,1]
   varp<-I_inverse[2,2]
+  logit<-function(k){log(k/(1-k))}
   output<-data.frame(parameter=c("prevalence","incidence"),
                      estimate=c(pi,p),
-                     lower=c(pi-1.96*sqrt(varpi),
-                             p-1.96*sqrt(varp)),
-                     upper=c(pi+1.96*sqrt(varpi),
-                             p+1.96*sqrt(varp))
+                     lower=exp(c(logit(pi)-1.96*sqrt(varpi)/(pi*(1-pi)),
+                             logit(p)-1.96*sqrt(varp)/(p*(1-p)))),
+                     upper=exp(c(logit(pi)+1.96*sqrt(varpi)/(pi*(1-pi)),
+                             logit(p)+1.96*sqrt(varp)/(p*(1-p))))
   )
 
   return(output)
