@@ -1,11 +1,11 @@
 Package: mlelabperform
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: MLE-EM Estimations of Lab Performance Adjusted Incidence and Prevalence
+Version: 1.0.0.0000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Yingjie",
+           family = "Weng",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "isabelweng@stanford.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
