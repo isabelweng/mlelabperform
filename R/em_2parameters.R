@@ -81,7 +81,7 @@ em_2parameters<-function(nk=c(100, rep(200,7),rep(150,6)),
 
     if( log_likelihood_change < tol  ){
       flag <- 1
-      print(paste0("After ",i," literations: Model Converged."))
+      #print(paste0("After ",i," literations: Model Converged."))
       return(data.frame(literation=i,
                         log_likelihodod=log_likelihood_cur,
                         pi=pi_cur,
